@@ -15,7 +15,6 @@ export async function TestimonialsPreview() {
   const fallback = getMockTestimonialsPage(0, PAGE_SIZE);
   const list = hasRealData && page ? page.items : fallback.items;
   const initialHasMore = hasRealData && page ? page.hasMore : fallback.hasMore;
-  const usesDemo = !hasRealData;
 
   return (
     <PageSection aria-labelledby="testimonials-preview-heading">
@@ -45,12 +44,6 @@ export async function TestimonialsPreview() {
       </div>
 
       <TestimonialsLoadMore initialOffset={PAGE_SIZE} initialHasMore={initialHasMore} />
-
-      {usesDemo ? (
-        <p className="mt-6 text-center text-xs text-text-muted">
-          Aperçu de démonstration — connectez Supabase pour afficher les avis validés.
-        </p>
-      ) : null}
     </PageSection>
   );
 }
