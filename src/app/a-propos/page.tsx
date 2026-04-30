@@ -8,7 +8,7 @@ import { RosePortrait } from "@/components/ui/RosePortrait";
 export const metadata: Metadata = {
   title: "À propos — Mon parcours",
   description:
-    "Rose Kaba, médium et thérapeute énergétique : plus de 15 ans d’accompagnement spirituel et de soins énergétiques.",
+    "Affoua Rose Kaba, médium et thérapeute énergétique : plus de 15 ans d’accompagnement spirituel et de soins énergétiques.",
   openGraph: {
     title: "Mon parcours — Rose Mediara",
     description:
@@ -23,7 +23,7 @@ export default function AboutPage() {
         <AnimateOnScroll>
           <SectionTitle
             title="Mon parcours"
-            subtitle="Je suis Rose Kaba. Médium et thérapeute énergétique, j’exerce avec cœur depuis de nombreuses années."
+            subtitle="Je suis Affoua Rose Kaba. Médium et thérapeute énergétique, j’exerce avec cœur depuis de nombreuses années."
           />
         </AnimateOnScroll>
 

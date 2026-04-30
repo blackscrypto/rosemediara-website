@@ -12,7 +12,7 @@ export function AboutPreview() {
             <SectionTitle
               id="about-preview-heading"
               title="Qui suis-je ?"
-              subtitle="Rose Kaba — médium, voyante et thérapeute énergétique."
+              subtitle="Affoua Rose Kaba — médium, voyante et thérapeute énergétique."
             />
             <p className="text-base font-medium leading-relaxed text-text-secondary">
               Depuis l’enfance, je perçois les énergies subtiles et le lien avec les
