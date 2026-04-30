@@ -1,9 +1,11 @@
 import type { TestimonialPublic } from "@/types";
 import { getSupabaseAnon } from "@/lib/supabase";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchApprovedTestimonials(
   limit?: number,
 ): Promise<TestimonialPublic[] | null> {
+  noStore();
   const supabase = getSupabaseAnon();
   if (!supabase) return null;
 
@@ -25,6 +27,7 @@ export async function fetchApprovedTestimonialsPage(
   limit: number,
   offset: number,
 ): Promise<{ items: TestimonialPublic[]; hasMore: boolean } | null> {
+  noStore();
   const supabase = getSupabaseAnon();
   if (!supabase) return null;
 
