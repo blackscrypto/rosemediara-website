@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 import { Container } from "@/components/ui/Container";
 import { NAV_LINKS } from "@/lib/nav-links";
 
@@ -24,26 +23,6 @@ export function Footer() {
             <p className="mt-3 max-w-xs text-sm font-medium text-text-secondary">
               Guidance spirituelle et soins énergétiques avec bienveillance.
             </p>
-            <div className="mt-4 flex gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-[12px] p-2 text-text-muted hover:bg-accent-rose/10 hover:text-accent-rose"
-                aria-label="Instagram (lien à remplacer)"
-              >
-                <InstagramIcon className="h-5 w-5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-[12px] p-2 text-text-muted hover:bg-accent-rose/10 hover:text-accent-rose"
-                aria-label="Facebook (lien à remplacer)"
-              >
-                <FacebookIcon className="h-5 w-5" />
-              </a>
-            </div>
           </div>
           <div>
             <p className="text-sm font-semibold text-text">Navigation</p>
@@ -72,7 +51,6 @@ export function Footer() {
                   contact@rosemediara.com
                 </a>
               </li>
-              <li>Horaires : lun.–ven., 14h–18h (à confirmer)</li>
             </ul>
           </div>
         </div>
