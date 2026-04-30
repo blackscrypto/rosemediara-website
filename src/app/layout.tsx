@@ -20,6 +20,10 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: defaultMetadataBase,
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    shortcut: [{ url: "/icon.png", type: "image/png" }],
+  },
   title: {
     default: `${siteName} — Médium & thérapeute énergétique | Consultations spirituelles`,
     template: `%s · ${siteName}`,
