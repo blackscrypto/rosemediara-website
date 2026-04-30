@@ -72,6 +72,13 @@ export async function POST(request: Request) {
 
   const to = getContactEmail();
   const from = getFromEmail();
+  const paymentUrl = process.env.STRIPE_SOINS_PAYMENT_LINK?.trim();
+  if (!paymentUrl) {
+    return NextResponse.json(
+      { error: "Lien de paiement Stripe non configuré (STRIPE_SOINS_PAYMENT_LINK)." },
+      { status: 503 },
+    );
+  }
 
   const attachments = await Promise.all(
     files.map(async (f) => {
@@ -130,7 +137,7 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, paymentUrl });
 }
 
 function escapeHtml(s: string) {

@@ -23,6 +23,7 @@ export function SoinsForm() {
     "idle",
   );
   const [globalError, setGlobalError] = useState<string | null>(null);
+  const [isRedirectingToPayment, setIsRedirectingToPayment] = useState(false);
 
   function validate() {
     const e: Record<string, string> = {};
@@ -64,6 +65,7 @@ export function SoinsForm() {
       const data = (await res.json().catch(() => ({}))) as {
         error?: string;
         retryAfterSec?: number;
+        paymentUrl?: string;
       };
 
       if (!res.ok) {
@@ -81,10 +83,16 @@ export function SoinsForm() {
         return;
       }
 
-      setStatus("success");
-      setValues(initial);
-      setFiles([]);
-      setErrors({});
+      if (!data.paymentUrl) {
+        setGlobalError(
+          "Demande envoyée mais lien de paiement indisponible. Merci de me contacter pour finaliser le règlement.",
+        );
+        setStatus("error");
+        return;
+      }
+
+      setIsRedirectingToPayment(true);
+      window.location.href = data.paymentUrl;
     } catch {
       setGlobalError("Erreur réseau. Vérifiez votre connexion.");
       setStatus("error");
@@ -289,10 +297,14 @@ export function SoinsForm() {
       <Button
         type="submit"
         variant="primary"
-        disabled={status === "loading"}
+        disabled={status === "loading" || isRedirectingToPayment}
         className="w-full sm:w-auto"
       >
-        {status === "loading" ? "Envoi en cours…" : "Envoyer ma demande"}
+        {status === "loading"
+          ? "Validation en cours…"
+          : isRedirectingToPayment
+            ? "Redirection vers le paiement…"
+            : "Valider ma demande et payer 145€"}
       </Button>
     </form>
   );

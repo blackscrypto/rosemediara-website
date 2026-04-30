@@ -40,9 +40,6 @@ export default function ContactPage() {
                   <Mail className="h-4 w-4 shrink-0" aria-hidden />
                   contact@rosemediara.com
                 </a>
-                <p className="mt-4 text-sm font-medium text-text-secondary">
-                  Horaires (placeholder) : lundi–vendredi, 14h–18h
-                </p>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll>
