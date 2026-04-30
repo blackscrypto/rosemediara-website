@@ -34,11 +34,11 @@ export default function ContactPage() {
               <div className="rounded-[14px] border border-border bg-gradient-card p-6 shadow-soft">
                 <p className="text-sm font-semibold text-text">Email</p>
                 <a
-                  href="mailto:contact@rosemediara.com"
+                  href="mailto:rosemediara@gmail.com"
                   className="mt-2 inline-flex items-center justify-center gap-2 text-accent-rose hover:underline lg:justify-start"
                 >
                   <Mail className="h-4 w-4 shrink-0" aria-hidden />
-                  contact@rosemediara.com
+                  rosemediara@gmail.com
                 </a>
               </div>
             </AnimateOnScroll>

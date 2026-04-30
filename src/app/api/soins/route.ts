@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getContactEmail, getFromEmail, getResend } from "@/lib/resend";
 import { getRequestIp } from "@/lib/request-ip";
+import { getStripe } from "@/lib/stripe";
 
 const MAX_FILES = 3;
 const MAX_BYTES = 5 * 1024 * 1024;
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
   const birthDate = String(formData.get("birthDate") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
   const acceptTerms = String(formData.get("acceptTerms") ?? "") === "true";
+  const paymentSessionId = String(formData.get("paymentSessionId") ?? "").trim();
 
   const errors: string[] = [];
   if (!firstName) errors.push("Prénom requis.");
@@ -36,6 +38,7 @@ export async function POST(request: Request) {
   if (!birthDate) errors.push("Date de naissance requise.");
   if (message.length < 20) errors.push("Message trop court.");
   if (!acceptTerms) errors.push("Acceptation des conditions requise.");
+  if (!paymentSessionId) errors.push("Paiement requis avant envoi.");
 
   const rawFiles = formData.getAll("photos");
   const files: File[] = [];
@@ -70,15 +73,40 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = getContactEmail();
-  const from = getFromEmail();
-  const paymentUrl = process.env.STRIPE_SOINS_PAYMENT_LINK?.trim();
-  if (!paymentUrl) {
+  const stripe = getStripe();
+  if (!stripe) {
     return NextResponse.json(
-      { error: "Lien de paiement Stripe non configuré (STRIPE_SOINS_PAYMENT_LINK)." },
+      { error: "Stripe non configuré (STRIPE_SECRET_KEY)." },
       { status: 503 },
     );
   }
+
+  const checkoutSession = await stripe.checkout.sessions
+    .retrieve(paymentSessionId)
+    .catch(() => null);
+  if (!checkoutSession) {
+    return NextResponse.json({ error: "Session de paiement introuvable." }, { status: 400 });
+  }
+  if (checkoutSession.payment_status !== "paid") {
+    return NextResponse.json({ error: "Paiement non confirmé." }, { status: 402 });
+  }
+  if (checkoutSession.metadata?.flow !== "soins") {
+    return NextResponse.json({ error: "Session de paiement invalide." }, { status: 400 });
+  }
+  const paidEmail = (
+    checkoutSession.customer_details?.email ??
+    checkoutSession.customer_email ??
+    ""
+  ).trim();
+  if (paidEmail && paidEmail.toLowerCase() !== email.toLowerCase()) {
+    return NextResponse.json(
+      { error: "L'email du paiement ne correspond pas à la demande." },
+      { status: 400 },
+    );
+  }
+
+  const to = getContactEmail();
+  const from = getFromEmail();
 
   const attachments = await Promise.all(
     files.map(async (f) => {
@@ -125,7 +153,15 @@ export async function POST(request: Request) {
     }),
   ]);
 
-  if (ownerSend.error || clientSend.error) {
+  // En mode test Resend, l'auto-réponse au client peut être bloquée
+  // (destinataire externe non autorisé). On ne bloque pas tout le tunnel :
+  // si l'email propriétaire est parti, on laisse le paiement continuer.
+  const clientErrorMessage = clientSend.error?.message ?? "";
+  const isResendRecipientRestriction =
+    clientErrorMessage.includes("You can only send testing emails to your own email address") ||
+    clientErrorMessage.includes("verify a domain at resend.com/domains");
+
+  if (ownerSend.error || (clientSend.error && !isResendRecipientRestriction)) {
     return NextResponse.json(
       {
         error:
@@ -137,7 +173,7 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true, paymentUrl });
+  return NextResponse.json({ ok: true });
 }
 
 function escapeHtml(s: string) {

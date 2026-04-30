@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { FileUpload } from "@/components/ui/FileUpload";
@@ -16,14 +17,16 @@ const initial = {
 };
 
 export function SoinsForm() {
+  const [mounted, setMounted] = useState(false);
   const [values, setValues] = useState(initial);
   const [files, setFiles] = useState<File[]>([]);
+  const [paymentSessionId, setPaymentSessionId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
   const [globalError, setGlobalError] = useState<string | null>(null);
-  const [isRedirectingToPayment, setIsRedirectingToPayment] = useState(false);
+  const [infoMessage, setInfoMessage] = useState<string | null>(null);
 
   function validate() {
     const e: Record<string, string> = {};
@@ -41,9 +44,53 @@ export function SoinsForm() {
     return Object.keys(e).length === 0;
   }
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    if (sessionId) {
+      setPaymentSessionId(sessionId);
+      params.delete("session_id");
+      const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+      window.history.replaceState({}, "", next);
+
+      let cancelled = false;
+      fetch(`/api/soins/checkout-session?id=${encodeURIComponent(sessionId)}`)
+        .then((res) => res.json().catch(() => ({})))
+        .then((data: { firstName?: string; lastName?: string; email?: string; error?: string }) => {
+          if (cancelled || data.error) return;
+          setValues((prev) => ({
+            ...prev,
+            firstName: data.firstName?.trim() || prev.firstName,
+            lastName: data.lastName?.trim() || prev.lastName,
+            email: data.email?.trim() || prev.email,
+          }));
+          setInfoMessage(
+            "Paiement bien enregistré. Vérifiez vos coordonnées, ajoutez vos photos puis envoyez votre demande.",
+          );
+        })
+        .catch(() => {});
+
+      setMounted(true);
+
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    setMounted(true);
+  }, []);
+
   async function onSubmit(ev: React.FormEvent) {
     ev.preventDefault();
     setGlobalError(null);
+    setInfoMessage(null);
+
+    if (!paymentSessionId) {
+      setGlobalError("Session de paiement introuvable.");
+      return;
+    }
+
     if (!validate()) return;
 
     setStatus("loading");
@@ -55,6 +102,7 @@ export function SoinsForm() {
     fd.append("birthDate", values.birthDate);
     fd.append("message", values.message.trim());
     fd.append("acceptTerms", values.acceptTerms ? "true" : "false");
+    fd.append("paymentSessionId", paymentSessionId);
     files.forEach((f) => fd.append("photos", f));
 
     try {
@@ -65,7 +113,6 @@ export function SoinsForm() {
       const data = (await res.json().catch(() => ({}))) as {
         error?: string;
         retryAfterSec?: number;
-        paymentUrl?: string;
       };
 
       if (!res.ok) {
@@ -83,20 +130,48 @@ export function SoinsForm() {
         return;
       }
 
-      if (!data.paymentUrl) {
-        setGlobalError(
-          "Demande envoyée mais lien de paiement indisponible. Merci de me contacter pour finaliser le règlement.",
-        );
-        setStatus("error");
-        return;
-      }
-
-      setIsRedirectingToPayment(true);
-      window.location.href = data.paymentUrl;
+      setPaymentSessionId(null);
+      setStatus("success");
+      setValues(initial);
+      setFiles([]);
+      setErrors({});
     } catch {
       setGlobalError("Erreur réseau. Vérifiez votre connexion.");
       setStatus("error");
     }
+  }
+
+  if (!mounted) {
+    return (
+      <div
+        className="rounded-[14px] border border-border bg-gradient-card px-8 py-12 text-center text-sm font-medium text-text-muted shadow-soft"
+        aria-busy="true"
+      >
+        Chargement…
+      </div>
+    );
+  }
+
+  if (!paymentSessionId && status !== "success") {
+    return (
+      <div className="rounded-[14px] border border-border bg-gradient-card p-8 text-center shadow-soft">
+        <p className="font-serif text-lg font-semibold text-text">
+          Paiement requis avant le formulaire
+        </p>
+        <p className="mt-3 text-sm font-medium leading-relaxed text-text-secondary">
+          Pour éviter les demandes sans règlement, le formulaire détaillé s’ouvre
+          uniquement après paiement sécurisé (145&nbsp;€).
+        </p>
+        <Button href="/soins/commander" variant="primary" className="mt-8">
+          Continuer vers le paiement
+        </Button>
+        <p className="mt-6 text-xs font-medium text-text-muted">
+          <Link href="/soins" className="text-accent-rose underline-offset-4 hover:underline">
+            ← Retour à la présentation des soins
+          </Link>
+        </p>
+      </div>
+    );
   }
 
   if (status === "success") {
@@ -109,8 +184,8 @@ export function SoinsForm() {
           Demande bien reçue
         </p>
         <p className="mt-2 text-sm text-text-muted">
-          Merci. Je reviendrai vers vous après étude de votre dossier. Un email
-          de confirmation vous a été envoyé.
+          Merci. Votre paiement et votre demande sont bien enregistrés. Je
+          reviendrai vers vous après étude de votre dossier.
         </p>
       </div>
     );
@@ -127,6 +202,14 @@ export function SoinsForm() {
           {globalError}
         </p>
       ) : null}
+      {infoMessage ? (
+        <p
+          className="rounded-[12px] border border-sage/30 bg-sage/10 px-4 py-3 text-sm text-text"
+          role="status"
+        >
+          {infoMessage}
+        </p>
+      ) : null}
 
       <div
         className="flex flex-wrap gap-2 text-xs font-semibold text-sage-ink"
@@ -134,16 +217,16 @@ export function SoinsForm() {
         aria-label="Progression du formulaire"
       >
         <span className="rounded-full bg-accent-rose/15 px-3 py-1.5 text-accent-rose">
-          1 · Coordonnées
+          Paiement validé
         </span>
         <span className="rounded-full bg-black/[0.06] px-3 py-1.5 text-text-secondary">
-          2 · Demande et photos
+          Demande détaillée
         </span>
       </div>
 
       <div>
         <h3 className="border-b border-border pb-2 font-serif text-base font-semibold text-text">
-          Étape 1 — Vos coordonnées
+          Vos coordonnées
         </h3>
       </div>
 
@@ -232,7 +315,7 @@ export function SoinsForm() {
 
       <div className="pt-2">
         <h3 className="border-b border-border pb-2 font-serif text-base font-semibold text-text">
-          Étape 2 — Votre demande et photos
+          Votre demande et photos
         </h3>
       </div>
 
@@ -294,17 +377,8 @@ export function SoinsForm() {
         </p>
       ) : null}
 
-      <Button
-        type="submit"
-        variant="primary"
-        disabled={status === "loading" || isRedirectingToPayment}
-        className="w-full sm:w-auto"
-      >
-        {status === "loading"
-          ? "Validation en cours…"
-          : isRedirectingToPayment
-            ? "Redirection vers le paiement…"
-            : "Valider ma demande et payer 145€"}
+      <Button type="submit" variant="primary" disabled={status === "loading"} className="w-full sm:w-auto">
+        {status === "loading" ? "Envoi en cours…" : "Envoyer ma demande"}
       </Button>
     </form>
   );

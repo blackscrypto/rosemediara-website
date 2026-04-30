@@ -41,7 +41,7 @@ export default function MentionsLegalesPage() {
           <h2>Contact</h2>
           <p>
             Pour toute question relative aux présentes mentions :{" "}
-            <a href="mailto:contact@rosemediara.com">contact@rosemediara.com</a>
+            <a href="mailto:rosemediara@gmail.com">rosemediara@gmail.com</a>
           </p>
         </article>
       </Container>

@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { StepCard } from "@/components/StepCard";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
-import { SoinsForm } from "@/components/soins/SoinsForm";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Soins énergétiques à distance",
@@ -43,7 +43,7 @@ export default function SoinsPage() {
                 <strong className="font-semibold text-text">
                   Les soins sont réalisés à distance, sans contact téléphonique.
                 </strong>{" "}
-                Vous me transmettez vos informations via le formulaire ci-dessous,
+                Après paiement, vous complétez votre demande sur une page dédiée ;
                 je réalise le soin et vous envoie un retour détaillé par email —
                 pour que vous puissiez relire et intégrer les messages à votre
                 rythme.
@@ -65,23 +65,23 @@ export default function SoinsPage() {
               <StepCard
                 step={1}
                 icon={Send}
-                title="Envoyez votre demande"
-                description="Remplissez le formulaire : votre message, vos informations et les photos demandées. Précisez le type de besoin si vous le souhaitez."
+                title="Validez le paiement"
+                description="Commencez par sécuriser votre séance via Stripe (145 €). Une fois le paiement confirmé, vous finalisez votre demande."
               />
             </AnimateOnScroll>
             <AnimateOnScroll>
               <StepCard
                 step={2}
                 icon={Sparkles}
-                title="Je réalise le soin"
-                description="Je me connecte à votre énergie à distance dans un cadre posé. Le travail peut inclure harmonisation des chakras et, selon les cas, un rituel de bougie personnalisé."
+                title="Envoyez votre demande"
+                description="Sur la page suivante, envoyez vos informations et photos confidentielles pour que je prépare le soin avec précision."
               />
             </AnimateOnScroll>
             <AnimateOnScroll>
               <StepCard
                 step={3}
                 icon={Mail}
-                title="Recevez votre retour"
+                title="Je réalise le soin et vous écris"
                 description="Vous recevez un compte-rendu détaillé par email : ressentis, messages et pistes pour la suite."
               />
             </AnimateOnScroll>
@@ -119,27 +119,15 @@ export default function SoinsPage() {
                     </li>
                   ))}
                 </ul>
+                <Button href="/soins/commander" variant="primary" className="mt-8 w-full">
+                  Réserver et payer — 145 €
+                </Button>
                 <p className="mt-6 text-xs font-medium text-text-muted">
-                  Indiquez dans le formulaire le type de soin souhaité ou décrivez
-                  votre situation : j’étudierai votre demande avant de confirmer
-                  la faisabilité et le délai.
+                  Après paiement, vous décrivez votre besoin et joignez vos photos sur la page dédiée.
+                  J’étudierai votre demande avant de confirmer la faisabilité et le délai.
                 </p>
               </div>
             </AnimateOnScroll>
-          </div>
-        </section>
-
-        <section className="mb-8" aria-labelledby="soins-form-title">
-          <AnimateOnScroll>
-            <SectionTitle
-              id="soins-form-title"
-              title="Formulaire de demande"
-              subtitle="Les champs marqués d’une astérisque sont obligatoires."
-              align="center"
-            />
-          </AnimateOnScroll>
-          <div className="mx-auto max-w-2xl">
-            <SoinsForm />
           </div>
         </section>
       </Container>

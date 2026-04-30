@@ -17,5 +17,5 @@ export function getFromEmail(): string {
 }
 
 export function getContactEmail(): string {
-  return process.env.CONTACT_EMAIL ?? "contact@rosemediara.com";
+  return process.env.CONTACT_EMAIL ?? "rosemediara@gmail.com";
 }
