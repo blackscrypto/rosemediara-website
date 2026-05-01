@@ -66,7 +66,7 @@ export default function SoinsPage() {
                 step={1}
                 icon={Send}
                 title="Validez le paiement"
-                description="Commencez par sécuriser votre séance via Stripe (1 €). Une fois le paiement confirmé, vous finalisez votre demande."
+                description="Commencez par sécuriser votre séance via Stripe (145 €). Une fois le paiement confirmé, vous finalisez votre demande."
               />
             </AnimateOnScroll>
             <AnimateOnScroll>
@@ -104,7 +104,7 @@ export default function SoinsPage() {
                   Soin énergétique à distance
                 </h3>
                 <p className="mt-4 font-serif text-4xl font-semibold text-accent-rose">
-                  1 €
+                  145 €
                 </p>
                 <p className="mt-2 text-sm font-medium text-text-secondary">
                   Soin réalisé à distance, sans appel téléphonique
@@ -120,7 +120,7 @@ export default function SoinsPage() {
                   ))}
                 </ul>
                 <Button href="/soins/commander" variant="primary" className="mt-8 w-full">
-                  Réserver et payer — 1 €
+                  Réserver et payer — 145 €
                 </Button>
                 <p className="mt-6 text-xs font-medium text-text-muted">
                   Après paiement, vous décrivez votre besoin et joignez vos photos sur la page dédiée.

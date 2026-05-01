@@ -8,7 +8,7 @@ import { SoinsCheckoutStart } from "@/components/soins/SoinsCheckoutStart";
 export const metadata: Metadata = {
   title: "Réserver un soin — paiement",
   description:
-    "Réglez votre soin énergétique à distance (1 €), puis complétez votre demande détaillée.",
+    "Réglez votre soin énergétique à distance (145 €), puis complétez votre demande détaillée.",
   robots: { index: false, follow: true },
 };
 
