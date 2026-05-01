@@ -160,7 +160,7 @@ export function SoinsForm() {
         </p>
         <p className="mt-3 text-sm font-medium leading-relaxed text-text-secondary">
           Pour éviter les demandes sans règlement, le formulaire détaillé s’ouvre
-          uniquement après paiement sécurisé (145&nbsp;€).
+          uniquement après paiement sécurisé (1&nbsp;€).
         </p>
         <Button href="/soins/commander" variant="primary" className="mt-8">
           Continuer vers le paiement

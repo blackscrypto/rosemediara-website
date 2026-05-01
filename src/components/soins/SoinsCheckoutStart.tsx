@@ -74,7 +74,7 @@ export function SoinsCheckoutStart() {
       noValidate
     >
       <p className="text-sm font-medium leading-relaxed text-text-secondary">
-        Après paiement sécurisé (145&nbsp;€), vous serez redirigé·e vers la page pour
+        Après paiement sécurisé (1&nbsp;€), vous serez redirigé·e vers la page pour
         compléter votre demande et joindre vos photos.
       </p>
 
@@ -134,7 +134,7 @@ export function SoinsCheckoutStart() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
         <Button type="submit" variant="primary" disabled={loading} className="w-full sm:w-auto">
-          {loading ? "Redirection vers Stripe…" : "Payer 145 € — continuer"}
+          {loading ? "Redirection vers Stripe…" : "Payer 1 € — continuer"}
         </Button>
         <Link
           href="/soins"

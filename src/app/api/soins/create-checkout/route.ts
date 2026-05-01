@@ -74,7 +74,7 @@ export async function POST(request: Request) {
         quantity: 1,
         price_data: {
           currency: "eur",
-          unit_amount: 14500,
+          unit_amount: 100,
           product_data: {
             name: "Soin énergétique à distance",
           },

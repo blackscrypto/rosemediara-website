@@ -22,7 +22,7 @@ export function AboutPreview() {
               avec une approche simple, humaine et authentique.
             </p>
             <p className="mt-4 text-base font-medium leading-relaxed text-text-secondary">
-              Mon souci : vous aider à retrouver de l’équilibre, à comprendre ce qui
+              Mon objectif : vous aider à retrouver de l’équilibre, à comprendre ce qui
               vous traverse et à avancer plus sereinement — sans créer de
               dépendance, en respectant totalement votre libre arbitre.
             </p>
