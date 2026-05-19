@@ -55,7 +55,7 @@ export const MOCK_TESTIMONIALS: TestimonialPublic[] = [
     first_name: "Céline",
     rating: 5,
     content:
-      "Le compte-rendu du soin à distance était détaillé et doux. J’ai relu plusieurs fois les passages qui me parlaient le plus.",
+      "Le soin à distance s’est déroulé dans un cadre très doux. Le petit point téléphonique après m’a beaucoup apaisée et aidée à intégrer ce que j’ai ressenti.",
     created_at: new Date(Date.now() - 86400000 * 12).toISOString(),
   },
   {

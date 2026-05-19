@@ -51,7 +51,10 @@ export function Hero() {
               />
               <div className="relative">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-sage-ink">
-                  Médium · Voyante · Thérapeute énergétique
+                  Thérapeute énergétique
+                </p>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-sage-ink/85">
+                  Médium pur
                 </p>
                 <h1 className="mt-3 font-serif text-2xl font-semibold text-accent-rose sm:text-3xl">
                   Rose Mediara

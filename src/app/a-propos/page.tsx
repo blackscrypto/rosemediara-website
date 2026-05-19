@@ -8,7 +8,7 @@ import { RosePortrait } from "@/components/ui/RosePortrait";
 export const metadata: Metadata = {
   title: "À propos — Mon parcours",
   description:
-    "Affoua Rose Kaba, médium et thérapeute énergétique : plus de 15 ans d’accompagnement spirituel et de soins énergétiques.",
+    "Affoua Rose Kaba, thérapeute énergétique et médium pur : plus de 15 ans d’accompagnement énergétique et médiumnique.",
   openGraph: {
     title: "Mon parcours — Rose Mediara",
     description:
@@ -23,7 +23,7 @@ export default function AboutPage() {
         <AnimateOnScroll>
           <SectionTitle
             title="Mon parcours"
-            subtitle="Je suis Affoua Rose Kaba. Médium et thérapeute énergétique, j’exerce avec cœur depuis de nombreuses années."
+            subtitle="Je suis Affoua Rose Kaba. Thérapeute énergétique et médium pur, j’exerce avec cœur depuis de nombreuses années."
           />
         </AnimateOnScroll>
 
@@ -43,9 +43,15 @@ export default function AboutPage() {
                 accompagné des milliers de personnes — en consultation
                 téléphonique ou par des soins à distance — qui souhaitaient des
                 éclairages sur leur chemin, un apaisement émotionnel ou une
-                réharmonisation énergétique. Chaque échange est unique : je ne
-                promets pas de miracle, je propose une présence claire, honnête
-                et bienveillante.
+                réharmonisation énergétique. Chaque échange est unique : je
+                propose une présence claire, honnête et bienveillante.
+              </p>
+              <p>
+                Mon accompagnement énergétique et médiumnique s’inscrit dans une
+                démarche de lumière, de conscience et de respect profond du
+                libre arbitre de chacun. Chacun avance selon son propre chemin
+                et son propre temps ; les ressentis et perceptions demandent
+                parfois de la patience avant de se concrétiser.
               </p>
               <p>
                 Aujourd’hui, ma mission reste la même : vous aider à vous
@@ -88,9 +94,8 @@ export default function AboutPage() {
               <p>
                 Je privilégie la franchise : je transmets ce que je perçois, dans
                 la mesure où cela peut vous servir, sans dramatiser ni vous
-                enfermer dans une histoire. Je ne pratique aucune promesse de
-                résultat ni aucune ingérence sur le libre arbitre d’autrui ; mon
-                cadre déontologique est public et consultable sur ce site.
+                enfermer dans une histoire. Mon cadre déontologique est public
+                et consultable sur ce site.
               </p>
               <p>
                 Les consultations et les soins ne remplacent en aucun cas un

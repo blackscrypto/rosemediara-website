@@ -12,7 +12,7 @@ export function AboutPreview() {
             <SectionTitle
               id="about-preview-heading"
               title="Qui suis-je ?"
-              subtitle="Affoua Rose Kaba — médium, voyante et thérapeute énergétique."
+              subtitle="Affoua Rose Kaba — thérapeute énergétique et médium pur."
             />
             <p className="text-base font-medium leading-relaxed text-text-secondary">
               Depuis l’enfance, je perçois les énergies subtiles et le lien avec les
@@ -22,9 +22,14 @@ export function AboutPreview() {
               avec une approche simple, humaine et authentique.
             </p>
             <p className="mt-4 text-base font-medium leading-relaxed text-text-secondary">
+              Mon accompagnement énergétique et médiumnique s’inscrit dans une
+              démarche de lumière, de conscience et de respect profond du libre
+              arbitre de chacun.
+            </p>
+            <p className="mt-4 text-base font-medium leading-relaxed text-text-secondary">
               Mon objectif : vous aider à retrouver de l’équilibre, à comprendre ce qui
               vous traverse et à avancer plus sereinement — sans créer de
-              dépendance, en respectant totalement votre libre arbitre.
+              dépendance.
             </p>
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-8 text-center sm:text-left">
               <div>

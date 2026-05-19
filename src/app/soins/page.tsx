@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heart, Mail, Send, Sparkles } from "lucide-react";
+import { Heart, Phone, Send, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { StepCard } from "@/components/StepCard";
@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Soins énergétiques à distance",
   description:
-    "Soins énergétiques à distance avec Rose Mediara : harmonisation, libération, accompagnements spécialisés. Demande par formulaire et retour par email.",
+    "Soins énergétiques à distance avec Rose Mediara : harmonisation, libération, accompagnements spécialisés. Avec un court échange téléphonique avant le soin et un bref point téléphonique après si nécessaire.",
   openGraph: {
     title: "Soins à distance — Rose Mediara",
     description:
-      "Sans appel téléphonique : envoyez votre demande, recevez un retour par email.",
+      "Soins énergétiques à distance, avec un court échange téléphonique avant et après si nécessaire.",
   },
 };
 
@@ -41,12 +41,19 @@ export default function SoinsPage() {
             <div className="mx-auto mt-6 max-w-2xl rounded-[14px] border border-accent-rose/35 bg-gradient-to-br from-accent-rose/12 via-cream/85 to-sage-muted/15 px-5 py-4 text-left text-sm font-medium leading-relaxed text-text-secondary sm:text-center">
               <p>
                 <strong className="font-semibold text-text">
-                  Les soins sont réalisés à distance, sans contact téléphonique.
+                  Les soins sont réalisés à distance.
                 </strong>{" "}
-                Après paiement, vous complétez votre demande sur une page dédiée ;
-                je réalise le soin et vous envoie un retour détaillé par email —
-                pour que vous puissiez relire et intégrer les messages à votre
-                rythme.
+                Un court échange téléphonique d’environ 10 minutes est prévu
+                avant le soin afin de me connecter à votre énergie. Après le
+                soin, un bref échange téléphonique peut avoir lieu pour faire un
+                point ensemble si cela est nécessaire.
+              </p>
+              <p className="mt-3">
+                La présence durant le soin n’est pas nécessaire. Les
+                informations transmises au préalable ainsi que la connexion
+                énergétique établie permettent de réaliser le soin dans les
+                meilleures conditions, tout en me laissant pleinement
+                concentrée sur le travail énergétique effectué.
               </p>
             </div>
           </AnimateOnScroll>
@@ -65,24 +72,24 @@ export default function SoinsPage() {
               <StepCard
                 step={1}
                 icon={Send}
-                title="Validez le paiement"
-                description="Commencez par sécuriser votre séance via Stripe (145 €). Une fois le paiement confirmé, vous finalisez votre demande."
+                title="Paiement et demande"
+                description="Sécurisez votre séance via Stripe, puis envoyez vos informations et photos confidentielles sur la page dédiée."
               />
             </AnimateOnScroll>
             <AnimateOnScroll>
               <StepCard
                 step={2}
-                icon={Sparkles}
-                title="Envoyez votre demande"
-                description="Sur la page suivante, envoyez vos informations et photos confidentielles pour que je prépare le soin avec précision."
+                icon={Phone}
+                title="Échange téléphonique avant le soin"
+                description="Un court appel d’environ 10 minutes me permet de me connecter à votre énergie et de préparer le soin avec précision."
               />
             </AnimateOnScroll>
             <AnimateOnScroll>
               <StepCard
                 step={3}
-                icon={Mail}
-                title="Je réalise le soin et vous écris"
-                description="Vous recevez un compte-rendu détaillé par email : ressentis, messages et pistes pour la suite."
+                icon={Sparkles}
+                title="Le soin et un court point après"
+                description="Je réalise le soin à distance ; un bref échange téléphonique peut être proposé après le soin pour faire un point si nécessaire."
               />
             </AnimateOnScroll>
           </div>
@@ -92,8 +99,7 @@ export default function SoinsPage() {
           <AnimateOnScroll>
             <SectionTitle
               id="soins-pricing"
-              title="Tarif indicatif"
-              subtitle="Montant reprenant la grille publique du site rosemediara.com — confirmez le tarif exact lors de votre demande ou par email."
+              title="Tarif"
               align="center"
             />
           </AnimateOnScroll>
@@ -107,7 +113,8 @@ export default function SoinsPage() {
                   145 €
                 </p>
                 <p className="mt-2 text-sm font-medium text-text-secondary">
-                  Soin réalisé à distance, sans appel téléphonique
+                  Soin à distance, avec un point téléphonique avant et après si
+                  nécessaire.
                 </p>
                 <ul className="mt-8 space-y-2 border-t border-border pt-6 text-left text-sm font-medium text-text-secondary">
                   {soinTypes.map((line) => (

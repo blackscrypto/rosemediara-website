@@ -15,7 +15,11 @@ const faqItems = [
   },
   {
     q: "Comment se déroule un soin à distance ?",
-    a: "Vous envoyez votre demande et les éléments demandés via le formulaire dédié. Je réalise le soin sans appel téléphonique, puis vous adresse un retour détaillé par email.",
+    a: "Vous envoyez votre demande et les éléments demandés via le formulaire dédié. Un court échange téléphonique d’environ 10 minutes a lieu avant le soin pour me connecter à votre énergie. Je réalise ensuite le soin à distance ; un bref échange téléphonique peut avoir lieu après pour faire un point si nécessaire.",
+  },
+  {
+    q: "Dois-je être présent·e pendant le soin ?",
+    a: "Non, votre présence durant le soin n’est pas nécessaire. Les informations transmises au préalable et la connexion énergétique établie permettent de réaliser le soin dans les meilleures conditions, tout en me laissant pleinement concentrée sur le travail énergétique effectué.",
   },
   {
     q: "Puis-je annuler ou reporter ma séance ?",
@@ -23,7 +27,7 @@ const faqItems = [
   },
   {
     q: "Combien de temps dure l’effet d’un soin énergétique ?",
-    a: "Chaque personne est unique : le ressenti et la durée des effets varient. Un soin n’est pas une promesse de résultat ; il s’inscrit dans une démarche d’accompagnement et d’harmonisation.",
+    a: "Chaque personne est unique. Chacun avance selon son propre chemin et son propre temps : les ressentis et perceptions demandent parfois de la patience avant de se concrétiser.",
   },
   {
     q: "Proposez-vous des consultations pour les enfants ?",
