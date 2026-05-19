@@ -42,7 +42,7 @@ export function AboutPreview() {
               </div>
               <div>
                 <dt className="font-serif text-2xl font-semibold text-accent-rose">
-                  15 000+
+                  1 500+
                 </dt>
                 <dd className="text-xs font-semibold text-sage-ink">
                   consultations
