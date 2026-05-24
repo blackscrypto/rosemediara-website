@@ -23,7 +23,7 @@ export default function AboutPage() {
         <AnimateOnScroll>
           <SectionTitle
             title="Mon parcours"
-            subtitle="Je suis Affoua Rose Kaba. Thérapeute énergétique et médium pur, j’exerce avec cœur depuis de nombreuses années."
+            subtitle="Je suis Affoua Rose Kaba, médium et praticienne en soins énergétiques."
           />
         </AnimateOnScroll>
 
@@ -31,35 +31,41 @@ export default function AboutPage() {
           <AnimateOnScroll>
             <div className="prose prose-neutral max-w-none space-y-4 font-medium text-text-secondary">
               <p>
-                Mon don s’est manifesté très tôt : enfant, je percevais déjà des
-                nuances d’énergie et des présences bienveillantes autour de moi.
-                Avec le temps, cette sensibilité s’est structurée en une véritable
-                pratique d’écoute et de transmission, toujours guidée par le
-                respect de la personne qui se confie à moi.
+                Depuis l’enfance, je ressens les énergies, les émotions et
+                certaines perceptions intuitives qui m’ont progressivement
+                conduite vers cette voie d’accompagnement. Ce chemin s’est
+                construit avec le temps, à travers l’expérience, l’écoute et une
+                profonde volonté d’aider les autres avec sincérité.
               </p>
               <p>
                 Depuis plus de{" "}
-                <strong className="font-medium text-text">quinze ans</strong>, j’ai
-                accompagné des milliers de personnes — en consultation
-                téléphonique ou par des soins à distance — qui souhaitaient des
-                éclairages sur leur chemin, un apaisement émotionnel ou une
-                réharmonisation énergétique. Chaque échange est unique : je
-                propose une présence claire, honnête et bienveillante.
+                <strong className="font-medium text-text">quinze ans</strong>, j’accompagne
+                des femmes et des hommes à travers des consultations spirituelles
+                et des soins énergétiques réalisés à distance. Beaucoup viennent
+                chercher des réponses, un soutien dans une période difficile ou
+                simplement un moment d’apaisement et de recentrage.
               </p>
               <p>
-                Mon accompagnement énergétique et médiumnique s’inscrit dans une
-                démarche de lumière, de conscience et de respect profond du
-                libre arbitre de chacun. Chacun avance selon son propre chemin
-                et son propre temps ; les ressentis et perceptions demandent
-                parfois de la patience avant de se concrétiser.
+                Je travaille avec douceur, honnêteté et respect du libre arbitre.
+                Mon rôle n’est pas de décider à votre place, mais de vous apporter
+                un éclairage et un accompagnement afin que vous puissiez avancer
+                avec davantage de sérénité et de conscience.
               </p>
               <p>
-                Aujourd’hui, ma mission reste la même : vous aider à vous
-                reconnecter à votre lumière intérieure, à comprendre ce que la
-                vie vous propose, et à avancer avec plus de paix — en
-                rappelant toujours que vous restez seul·e maître·sse de vos
-                décisions.
+                Chaque séance est réalisée dans un cadre confidentiel,
+                bienveillant et sans jugement. Je tiens également à exercer cette
+                activité avec des limites claires et une déontologie accessible à
+                tous.
               </p>
+              <p>
+                Aujourd’hui encore, je considère cette pratique comme une mission
+                de cœur : aider chacun à se reconnecter à sa lumière intérieure
+                et à avancer plus paisiblement sur son chemin.
+              </p>
+              <blockquote className="border-l-4 border-accent-rose/40 pl-4 font-serif text-lg leading-relaxed text-text sm:text-xl">
+                « La lumière que vous cherchez existe déjà en vous. Mon rôle est
+                simplement de vous aider à la retrouver. »
+              </blockquote>
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll>
