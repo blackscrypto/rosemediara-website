@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/icon.png", type: "image/png" }],
   },
   title: {
-    default: `${siteName} — Médium & thérapeute énergétique | Consultations spirituelles`,
+    default: `${siteName} | Thérapeute énergétique et médium pur`,
     template: `%s · ${siteName}`,
   },
   description: siteDescription,

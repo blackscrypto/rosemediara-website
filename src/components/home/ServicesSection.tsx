@@ -19,11 +19,11 @@ export function ServicesSection() {
             <ServiceCard
               icon={Phone}
               title="Consultations téléphoniques"
-              description="Échange en direct : guidance, messages des guides et conseils adaptés à votre situation — du format court (15 min) à une heure, selon ce dont vous avez besoin."
+              description="Échange en direct : guidance, messages des guides et conseils adaptés à votre situation, du format court (15 min) à une heure, selon ce dont vous avez besoin."
               highlights={[
                 "Durées de 15 minutes à 1 heure",
                 "Guidance ciblée ou temps plus long pour approfondir",
-                "Réservation en ligne – je vous rappellerai à l’heure convenue",
+                "Réservation en ligne, je vous rappellerai à l’heure convenue",
               ]}
               meta="Par téléphone · Sur rendez-vous"
               ctaLabel="Voir les tarifs & réserver"

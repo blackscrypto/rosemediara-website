@@ -21,7 +21,7 @@ const pricing: PricingItem[] = [
     price: "30",
     duration: "15 minutes",
     detail:
-      "Réponse ciblée pour une question précise et urgente — idéal pour un éclairage express.",
+      "Réponse ciblée pour une question précise et urgente, idéale pour un éclairage express.",
     invitation: "Un moment rien que pour vous, pour avancer sur un point précis sans vous engager sur une longue séance.",
     perks: ["Écoute pleine attention", "Réponses claires et directes"],
   },
@@ -203,7 +203,7 @@ function TimelinePricing() {
         <p className="mx-auto mb-5 max-w-3xl text-center text-sm font-medium leading-relaxed text-text-secondary sm:mb-6 sm:text-base">
           <span className="text-text">Ordre proposé :</span> du format{" "}
           <strong className="font-semibold text-text">le plus court</strong> au{" "}
-          <strong className="font-semibold text-text">plus long</strong>. Chaque formule a le même soin — seul le
+          <strong className="font-semibold text-text">plus long</strong>. Chaque formule reçoit le même soin : seul le
           temps d’échange change.
         </p>
       </AnimateOnScroll>

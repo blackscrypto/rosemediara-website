@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Consultations par téléphone avec Rose Mediara : formats 15 min à 1 h, guidance et messages des guides. Réservation en ligne.",
   openGraph: {
-    title: "Consultations téléphoniques — Rose Mediara",
+    title: "Consultations téléphoniques | Rose Mediara",
     description:
       "Réservez votre créneau pour un échange en direct par téléphone.",
   },
@@ -42,7 +42,7 @@ export default function ConsultationsPage() {
               <p className="mx-auto mt-4 max-w-2xl font-medium text-text-secondary">
                 Toutes les consultations se déroulent par téléphone. Après votre
                 réservation en ligne, vous recevez les coordonnées pour notre
-                rendez-vous — je vous appelle à l’heure convenue au numéro
+                rendez-vous. Je vous appelle à l’heure convenue au numéro
                 indiqué.
               </p>
               <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -115,7 +115,7 @@ export default function ConsultationsPage() {
               <SectionTitle
                 id="pricing-consult"
                 title="Tarifs"
-                subtitle="Les montants ci-dessous reprennent la grille affichée sur rosemediara.com — vérifiez-les lors de la réservation au cas où ils évolueraient."
+                subtitle="Choisissez la durée qui vous convient lors de la réservation en ligne."
                 align="center"
                 className="!mb-5 sm:!mb-6"
               />

@@ -64,7 +64,7 @@ export function Hero() {
                 </h2>
                 <p className="mt-6 max-w-2xl text-lg font-semibold leading-relaxed text-text sm:text-xl">
                   Consultations par téléphone et soins énergétiques à distance,
-                  dans le respect de votre rythme — pour retrouver équilibre,
+                  dans le respect de votre rythme, pour retrouver équilibre,
                   clarté et sérénité sur votre chemin.
                 </p>
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -75,21 +75,20 @@ export function Hero() {
                     Découvrir Rose
                   </Button>
                 </div>
-                <p className="mt-8 text-sm font-semibold text-text">
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold text-text">
                   <Link
                     href="/deontologie"
                     className="text-accent-rose underline-offset-4 hover:underline"
                   >
                     Lire le code de déontologie
                   </Link>
-                  {" · "}
                   <Link
                     href="/contact"
-                    className="underline-offset-4 hover:underline"
+                    className="shrink-0 underline-offset-4 hover:underline"
                   >
                     Me contacter
                   </Link>
-                </p>
+                </div>
               </div>
             </div>
           </div>

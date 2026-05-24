@@ -6,7 +6,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SoinsForm } from "@/components/soins/SoinsForm";
 
 export const metadata: Metadata = {
-  title: "Demande de soin — formulaire",
+  title: "Demande de soin | formulaire",
   description:
     "Complétez votre demande de soin énergétique à distance après paiement.",
   robots: { index: false, follow: true },

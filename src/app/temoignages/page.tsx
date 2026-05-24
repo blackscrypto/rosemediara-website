@@ -11,9 +11,9 @@ import { getMockTestimonialsPage } from "@/lib/mock-testimonials";
 export const metadata: Metadata = {
   title: "Témoignages",
   description:
-    "Lisez les témoignages de consultants et déposez le vôtre — publication après vérification.",
+    "Lisez les témoignages de consultants et déposez le vôtre. Publication après vérification.",
   openGraph: {
-    title: "Témoignages — Rose Mediara",
+    title: "Témoignages | Rose Mediara",
     description: "Avis authentiques et formulaire de dépôt sécurisé.",
   },
 };
@@ -62,7 +62,7 @@ export default async function TemoignagesPage({ searchParams }: Props) {
 
         {usesDemo ? (
           <p className="mb-10 text-center text-xs text-text-muted">
-            Données de démonstration — configurez Supabase pour afficher les
+            Données de démonstration : configurez Supabase pour afficher les
             témoignages validés.
           </p>
         ) : null}

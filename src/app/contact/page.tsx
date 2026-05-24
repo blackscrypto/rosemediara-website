@@ -9,9 +9,9 @@ import { ContactForm } from "@/components/contact/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez Rose Mediara par email ou formulaire — réponse sous quelques jours ouvrés.",
+    "Contactez Rose Mediara par email ou formulaire. Réponse sous quelques jours ouvrés.",
   openGraph: {
-    title: "Contact — Rose Mediara",
+    title: "Contact | Rose Mediara",
     description: "Formulaire de contact et coordonnées.",
   },
 };

@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description:
-    "Traitement des données personnelles et droits RGPD — Rose Mediara.",
+    "Traitement des données personnelles et droits RGPD | Rose Mediara.",
 };
 
 export default function PolitiqueConfidentialitePage() {

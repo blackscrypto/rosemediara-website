@@ -6,7 +6,7 @@ const pillars = [
   {
     icon: Leaf,
     title: "Don de naissance",
-    text: "Une sensibilité aux énergies et aux guides, présente depuis l’enfance — le fil conducteur de mon accompagnement.",
+    text: "Une sensibilité aux énergies et aux guides, présente depuis l’enfance. C’est le fil conducteur de mon accompagnement.",
   },
   {
     icon: Heart,
@@ -16,7 +16,7 @@ const pillars = [
   {
     icon: Sparkles,
     title: "Énergie & clarté",
-    text: "Consultations et soins pour retrouver de la lisibilité dans ce que vous traversez — et des pistes concrètes pour avancer.",
+    text: "Consultations et soins pour retrouver de la lisibilité dans ce que vous traversez, avec des pistes concrètes pour avancer.",
   },
 ];
 

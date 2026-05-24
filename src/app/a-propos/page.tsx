@@ -6,11 +6,11 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { RosePortrait } from "@/components/ui/RosePortrait";
 
 export const metadata: Metadata = {
-  title: "À propos — Mon parcours",
+  title: "À propos | Mon parcours",
   description:
     "Affoua Rose Kaba, thérapeute énergétique et médium pur : plus de 15 ans d’accompagnement énergétique et médiumnique.",
   openGraph: {
-    title: "Mon parcours — Rose Mediara",
+    title: "Mon parcours | Rose Mediara",
     description:
       "Une présence apaisée pour votre guidance et vos soins énergétiques.",
   },
@@ -94,26 +94,31 @@ export default function AboutPage() {
           <AnimateOnScroll className="order-1 lg:order-2">
             <SectionTitle
               title="Mon approche"
-              subtitle="Transparence, éthique et limites claires — sans artifice."
+              subtitle="Une présence sincère, dans le respect de votre chemin."
             />
             <div className="prose prose-neutral max-w-none space-y-4 font-medium text-text-secondary">
               <p>
-                Je privilégie la franchise : je transmets ce que je perçois, dans
-                la mesure où cela peut vous servir, sans dramatiser ni vous
-                enfermer dans une histoire. Mon cadre déontologique est public
-                et consultable sur ce site.
+                Je travaille avec authenticité et simplicité. Je transmets ce
+                que je ressens avec bienveillance, sans chercher à impressionner,
+                à faire peur ou à créer de dépendance. Mon rôle est d’apporter un
+                éclairage, tout en vous laissant libre de vos choix et de votre
+                propre cheminement.
               </p>
               <p>
-                Les consultations et les soins ne remplacent en aucun cas un
-                avis médical, psychologique ou psychiatrique. En cas de souffrance
-                physique ou psychique importante, il est essentiel de vous
-                tourner vers les professionnels de santé habilités.
+                Parce que la confiance est essentielle, mon cadre déontologique
+                est clairement défini et accessible sur ce site.
               </p>
               <p>
-                En séance comme à distance, vous êtes accueilli·e dans un
-                espace de respect : rythme posé, confidentialité, et possibilité
-                pour vous de poser vos limites à tout moment. C’est ainsi que
-                nous construisons ensemble un échange de qualité.
+                Les consultations et soins énergétiques proposés s’inscrivent
+                dans une démarche spirituelle et de mieux-être. Ils ne remplacent
+                jamais l’accompagnement d’un médecin, psychologue ou psychiatre
+                lorsque cela est nécessaire.
+              </p>
+              <p>
+                Chaque séance se déroule dans un climat de respect, de
+                confidentialité et d’écoute. Vous avancez à votre rythme, dans
+                un espace où vos émotions, vos ressentis et vos limites sont
+                accueillis avec douceur et considération.
               </p>
             </div>
           </AnimateOnScroll>

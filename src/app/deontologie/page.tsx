@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Les engagements éthiques de Rose Mediara : respect du libre arbitre, confidentialité, limites de la pratique.",
   openGraph: {
-    title: "Code de déontologie — Rose Mediara",
+    title: "Code de déontologie | Rose Mediara",
     description: "Principes déontologiques de l’exercice de médium et thérapeute énergétique.",
   },
 };

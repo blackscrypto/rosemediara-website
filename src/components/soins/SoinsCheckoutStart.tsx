@@ -134,7 +134,7 @@ export function SoinsCheckoutStart() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
         <Button type="submit" variant="primary" disabled={loading} className="w-full sm:w-auto">
-          {loading ? "Redirection vers Stripe…" : "Payer 145 € — continuer"}
+          {loading ? "Redirection vers Stripe…" : "Payer 145 € et continuer"}
         </Button>
         <Link
           href="/soins"

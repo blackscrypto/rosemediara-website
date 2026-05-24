@@ -12,13 +12,13 @@ export function AboutPreview() {
             <SectionTitle
               id="about-preview-heading"
               title="Qui suis-je ?"
-              subtitle="Affoua Rose Kaba — thérapeute énergétique et médium pur."
+              subtitle="Affoua Rose Kaba, thérapeute énergétique et médium pur."
             />
             <p className="text-base font-medium leading-relaxed text-text-secondary">
               Depuis l’enfance, je perçois les énergies subtiles et le lien avec les
               guides. Depuis plus de{" "}
               <strong className="font-medium text-text">15 ans</strong>, j’accompagne
-              celles et ceux qui cherchent du sens, des réponses ou un apaisement —
+              celles et ceux qui cherchent du sens, des réponses ou un apaisement,
               avec une approche simple, humaine et authentique.
             </p>
             <p className="mt-4 text-base font-medium leading-relaxed text-text-secondary">
@@ -28,7 +28,7 @@ export function AboutPreview() {
             </p>
             <p className="mt-4 text-base font-medium leading-relaxed text-text-secondary">
               Mon objectif : vous aider à retrouver de l’équilibre, à comprendre ce qui
-              vous traverse et à avancer plus sereinement — sans créer de
+              vous traverse et à avancer plus sereinement, sans créer de
               dépendance.
             </p>
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-8 text-center sm:text-left">

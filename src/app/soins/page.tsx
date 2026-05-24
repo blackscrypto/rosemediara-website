@@ -11,17 +11,17 @@ export const metadata: Metadata = {
   description:
     "Soins énergétiques à distance avec Rose Mediara : harmonisation, libération, accompagnements spécialisés. Avec un court échange téléphonique avant le soin et un bref point téléphonique après si nécessaire.",
   openGraph: {
-    title: "Soins à distance — Rose Mediara",
+    title: "Soins à distance | Rose Mediara",
     description:
       "Soins énergétiques à distance, avec un court échange téléphonique avant et après si nécessaire.",
   },
 };
 
 const soinTypes = [
-  "Soin de couple — union & guérison",
-  "Soin des vies antérieures — mémoires & réparations",
-  "Soin de libération — cœur, corps & âme",
-  "Nettoyage énergétique des lieux — habitat & harmonie",
+  "Soin de couple : union et guérison",
+  "Soin des vies antérieures : mémoires et réparations",
+  "Soin de libération : cœur, corps et âme",
+  "Nettoyage énergétique des lieux : habitat et harmonie",
 ];
 
 export default function SoinsPage() {
@@ -127,7 +127,7 @@ export default function SoinsPage() {
                   ))}
                 </ul>
                 <Button href="/soins/commander" variant="primary" className="mt-8 w-full">
-                  Réserver et payer — 145 €
+                  Réserver et payer (145 €)
                 </Button>
                 <p className="mt-6 text-xs font-medium text-text-muted">
                   Après paiement, vous décrivez votre besoin et joignez vos photos sur la page dédiée.

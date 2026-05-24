@@ -6,7 +6,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SoinsCheckoutStart } from "@/components/soins/SoinsCheckoutStart";
 
 export const metadata: Metadata = {
-  title: "Réserver un soin — paiement",
+  title: "Réserver un soin | paiement",
   description:
     "Réglez votre soin énergétique à distance (145 €), puis complétez votre demande détaillée.",
   robots: { index: false, follow: true },
