@@ -7,12 +7,11 @@ export type PricingItem = {
   title: string;
   price: string;
   duration: string;
-  detail: string;
+  intro: string;
+  idealFor: string;
+  perks: readonly string[];
+  closing: string;
   popular?: boolean;
-  /** Accroche premium (timeline) */
-  invitation: string;
-  /** Deux atouts courts, lisibles au scan */
-  perks: readonly [string, string];
 };
 
 const pricing: PricingItem[] = [
@@ -20,38 +19,66 @@ const pricing: PricingItem[] = [
     title: "Consultation rapide",
     price: "30",
     duration: "15 minutes",
-    detail:
-      "Réponse ciblée pour une question précise et urgente, idéale pour un éclairage express.",
-    invitation: "Un moment rien que pour vous, pour avancer sur un point précis sans vous engager sur une longue séance.",
-    perks: ["Écoute pleine attention", "Réponses claires et directes"],
+    intro:
+      "Un échange court et ciblé pour obtenir un éclairage immédiat sur une situation précise.",
+    idealFor:
+      "Cette formule est idéale si vous avez une question unique ou un point urgent à clarifier sans entrer dans une analyse approfondie.",
+    perks: [
+      "Écoute attentive et recentrée",
+      "Guidance intuitive ciblée",
+      "Réponse claire et directe",
+    ],
+    closing:
+      "En 15 minutes, je vous apporte un éclairage précis sur une situation actuelle, afin de vous aider à comprendre l’énergie du moment et à orienter votre décision ou votre ressenti avec plus de clarté.",
   },
   {
     title: "Consultation express",
     price: "60",
     duration: "30 minutes",
-    detail:
-      "Guidance rapide et précise : connexion médiumnique, messages des guides, conseils personnalisés.",
-    invitation: "Le bon équilibre : assez de temps pour respirer, poser plusieurs sujets et recevoir une vraie guidance.",
-    perks: ["Échange personnalisé", "Messages des guides"],
+    intro:
+      "Un temps équilibré pour explorer une à deux questions avec clarté et fluidité.",
+    idealFor:
+      "Cette formule est idéale si vous souhaitez aborder un ou deux sujets précis, tout en prenant le temps de recevoir une guidance plus complète et structurée.",
+    perks: [
+      "Échange personnalisé et approfondi",
+      "Messages intuitifs et guidance médiumnique",
+      "Conseils adaptés à votre situation",
+    ],
+    closing:
+      "En 30 minutes, je me connecte à votre énergie pour vous transmettre des messages des guides et des ressentis précis, afin de vous aider à mieux comprendre vos dynamiques actuelles et les pistes d’évolution possibles.",
   },
   {
     title: "Consultation approfondie",
     price: "90",
     duration: "45 minutes",
-    detail:
-      "Exploration détaillée : médiumnité avancée, lecture énergétique et conseils structurants.",
-    invitation: "Pour aller plus en profondeur, avec calme : nuances, vision élargie et conseils structurants.",
-    perks: ["Lecture énergétique", "Vision plus large de votre situation"],
+    intro:
+      "Un temps privilégié pour aller plus en profondeur et éclairer votre situation avec finesse et clarté.",
+    idealFor:
+      "Cette formule est idéale si vous souhaitez explorer plusieurs aspects d’une situation avec davantage de recul, de nuances et de précision.",
+    perks: [
+      "Lecture énergétique complète",
+      "Messages intuitifs et guidance approfondie",
+      "Vision élargie de votre situation",
+    ],
+    closing:
+      "En 45 minutes, je vous accompagne dans une lecture plus détaillée de votre vécu, avec une perception énergétique affinée et des conseils structurants pour vous aider à comprendre les enjeux présents et les directions possibles.",
   },
   {
     title: "Consultation complète",
     price: "110",
     duration: "1 heure",
-    detail:
-      "Accompagnement le plus complet : médiumnité, lecture d’énergie et plan d’actions personnalisé.",
+    intro:
+      "La formule la plus choisie pour un accompagnement profond, structuré et entièrement personnalisé.",
+    idealFor:
+      "Cette séance vous permet de prendre le temps nécessaire pour explorer votre situation dans sa globalité, avec une vraie qualité d’échange et de guidance.",
+    perks: [
+      "Accompagnement sur-mesure et approfondi",
+      "Lecture énergétique complète et messages intuitifs",
+      "Plan de compréhension et pistes d’évolution personnalisées",
+    ],
+    closing:
+      "En 1 heure, nous prenons le temps d’explorer en profondeur votre situation, vos blocages et vos potentiels, afin de vous offrir une vision claire et des clés concrètes pour avancer avec plus de sérénité et de stabilité.",
     popular: true,
-    invitation: "L’expérience la plus riche : on prend le temps d’ensemble, comme un véritable rendez-vous sur-mesure.",
-    perks: ["Accompagnement sur-mesure", "Plan d’actions à suivre après l’appel"],
   },
 ];
 
@@ -77,8 +104,10 @@ function CardsPricing() {
             <p className="mt-4 font-serif text-4xl font-semibold text-accent-rose">
               {p.price} €
             </p>
-            <p className="mt-3 flex-1 text-left text-sm font-medium leading-relaxed text-text-secondary">
-              {p.detail}
+            <p className="mt-3 flex-1 space-y-3 text-left text-sm font-medium leading-relaxed text-text-secondary">
+              <span className="block">{p.intro}</span>
+              <span className="block">{p.idealFor}</span>
+              <span className="block">{p.closing}</span>
             </p>
           </div>
         </AnimateOnScroll>
@@ -112,8 +141,10 @@ function TablePricing() {
                 </p>
               </div>
               <p className="mt-2 text-sm font-semibold text-sage-ink">{p.duration}</p>
-              <p className="mt-2 text-sm font-medium leading-relaxed text-text-secondary">
-                {p.detail}
+              <p className="mt-2 space-y-2 text-sm font-medium leading-relaxed text-text-secondary">
+                <span className="block">{p.intro}</span>
+                <span className="block">{p.idealFor}</span>
+                <span className="block">{p.closing}</span>
               </p>
             </div>
           </AnimateOnScroll>
@@ -171,8 +202,10 @@ function TablePricing() {
                       p.popular ? "bg-accent-rose/[0.04]" : "bg-cream-deep/30"
                     }`}
                   >
-                    <td colSpan={3} className="px-5 pb-4 pt-0 text-sm font-medium leading-relaxed text-text-secondary">
-                      {p.detail}
+                    <td colSpan={3} className="space-y-2 px-5 pb-4 pt-0 text-sm font-medium leading-relaxed text-text-secondary">
+                      <p>{p.intro}</p>
+                      <p>{p.idealFor}</p>
+                      <p>{p.closing}</p>
                     </td>
                   </tr>
                 </Fragment>
@@ -249,21 +282,25 @@ function TimelinePricing() {
                           Formule {step} / {total}
                         </p>
                         <h3 className="mt-0.5 font-serif text-lg font-semibold leading-snug text-text sm:text-xl">
-                          {p.title}
+                          {p.title} ({p.duration})
                         </h3>
                         <div className="mt-1 min-h-[1.25rem]">
                           {p.popular ? (
                             <span className="inline-flex rounded-full bg-accent-rose px-2.5 py-0.5 text-[0.7rem] font-semibold text-white sm:py-1 sm:text-xs">
-                              Souvent choisie
+                              La formule la plus choisie
                             </span>
                           ) : null}
                         </div>
 
-                        <p className="mt-1.5 font-serif text-sm italic leading-snug text-accent-rose/95 sm:text-[0.9375rem] sm:leading-snug">
-                          {p.invitation}
+                        <p className="mt-2 text-sm font-medium leading-snug text-text-secondary sm:text-[0.9375rem] sm:leading-snug">
+                          {p.intro}
                         </p>
 
-                        <ul className="mt-1.5 flex flex-col gap-0.5 text-xs font-semibold leading-snug text-sage sm:text-sm">
+                        <p className="mt-2 text-sm font-medium leading-snug text-text-secondary sm:text-[0.9375rem] sm:leading-snug">
+                          {p.idealFor}
+                        </p>
+
+                        <ul className="mt-2 flex flex-col gap-0.5 text-xs font-semibold leading-snug text-sage sm:text-sm">
                           {p.perks.map((line) => (
                             <li key={line} className="flex gap-2">
                               <span className="w-3 shrink-0 text-center text-gold" aria-hidden>
@@ -275,7 +312,7 @@ function TimelinePricing() {
                         </ul>
 
                         <p className="mt-2 text-sm font-medium leading-snug text-text-secondary sm:text-[0.9375rem] sm:leading-snug">
-                          {p.detail}
+                          {p.closing}
                         </p>
                       </div>
                     </div>
