@@ -59,7 +59,7 @@ export default function CgvPage() {
           <h2>Article 5 - Exécution de la prestation</h2>
           <p>
             La prestation est réalisée selon les modalités indiquées lors de la
-            commande (à distance, envoi d&apos;informations, etc.). Le client
+            commande (à distance, envoi d&apos;informations). Le client
             s&apos;engage à fournir des informations exactes et complètes.
           </p>
 

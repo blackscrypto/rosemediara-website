@@ -36,7 +36,7 @@ export function ServicesSection() {
               title="Soins énergétiques à distance"
               description="Vous déposez votre demande, un court échange téléphonique est prévu avant le soin pour me connecter à votre énergie, je réalise le soin à distance, puis un bref échange téléphonique peut avoir lieu après pour faire un point si nécessaire."
               highlights={[
-                "Harmonisation, libération, travail sur les vies antérieures, etc.",
+                "Harmonisation, libération, travail sur les vies antérieures, nettoyage énergétique des lieux",
                 "Court échange téléphonique d’environ 10 minutes avant le soin",
                 "Bref point téléphonique après le soin si nécessaire",
               ]}
