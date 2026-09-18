@@ -20,6 +20,7 @@ export function SoinsForm() {
   const [mounted, setMounted] = useState(false);
   const [values, setValues] = useState(initial);
   const [files, setFiles] = useState<File[]>([]);
+  const [forMinor, setForMinor] = useState(false);
   const [paymentSessionId, setPaymentSessionId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
@@ -57,8 +58,9 @@ export function SoinsForm() {
       let cancelled = false;
       fetch(`/api/soins/checkout-session?id=${encodeURIComponent(sessionId)}`)
         .then((res) => res.json().catch(() => ({})))
-        .then((data: { firstName?: string; lastName?: string; email?: string; error?: string }) => {
+        .then((data: { firstName?: string; lastName?: string; email?: string; soinName?: string; minor?: boolean; error?: string }) => {
           if (cancelled || data.error) return;
+          setForMinor(Boolean(data.minor));
           setValues((prev) => ({
             ...prev,
             firstName: data.firstName?.trim() || prev.firstName,
@@ -66,7 +68,7 @@ export function SoinsForm() {
             email: data.email?.trim() || prev.email,
           }));
           setInfoMessage(
-            "Paiement bien enregistré. Vérifiez vos coordonnées, ajoutez vos photos puis envoyez votre demande.",
+            `Paiement bien enregistré${data.soinName ? ` (${data.soinName})` : ""}. Vérifiez vos coordonnées, ajoutez vos photos puis envoyez votre demande.`,
           );
         })
         .catch(() => {});
@@ -160,10 +162,10 @@ export function SoinsForm() {
         </p>
         <p className="mt-3 text-sm font-medium leading-relaxed text-text-secondary">
           Pour éviter les demandes sans règlement, le formulaire détaillé s’ouvre
-          uniquement après paiement sécurisé (145&nbsp;€).
+          uniquement après paiement sécurisé.
         </p>
-        <Button href="/soins/commander" variant="primary" className="mt-8">
-          Continuer vers le paiement
+        <Button href="/soins#soins-pricing" variant="primary" className="mt-8">
+          Choisir un soin
         </Button>
         <p className="mt-6 text-xs font-medium text-text-muted">
           <Link href="/soins" className="text-accent-rose underline-offset-4 hover:underline">
@@ -296,7 +298,7 @@ export function SoinsForm() {
 
       <FormField
         id="soins-birthDate"
-        label="Date de naissance"
+        label={forMinor ? "Date de naissance de l’enfant" : "Date de naissance"}
         required
         error={errors.birthDate}
       >
@@ -324,7 +326,7 @@ export function SoinsForm() {
         label="Photos"
         required
         error={errors.photos}
-        hint="Une à trois photos récentes (visage de préférence). Elles restent strictement confidentielles et ne servent qu’à me connecter à votre énergie pour le soin."
+        hint={`Une à trois photos récentes${forMinor ? " de l’enfant" : ""} (visage de préférence). Elles restent strictement confidentielles et ne servent qu’à me connecter à votre énergie pour le soin.`}
       >
         <FileUpload
           id="soins-photos"

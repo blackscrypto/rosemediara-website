@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getRequestIp } from "@/lib/request-ip";
+import { getSoin } from "@/lib/soins";
 import { getSiteUrl, getStripe } from "@/lib/stripe";
 
 type Body = {
   firstName?: string;
   lastName?: string;
   email?: string;
+  soin?: string;
 };
 
 function isValidEmail(s: string) {
@@ -35,6 +37,11 @@ export async function POST(request: Request) {
   const lastName = String(body.lastName ?? "").trim();
   const email = String(body.email ?? "").trim();
 
+  const soin = getSoin(String(body.soin ?? "").trim());
+
+  if (!soin) {
+    return NextResponse.json({ error: "Soin inconnu." }, { status: 400 });
+  }
   if (!firstName || !lastName) {
     return NextResponse.json({ error: "Nom et prénom requis." }, { status: 400 });
   }
@@ -62,21 +69,23 @@ export async function POST(request: Request) {
     mode: "payment",
     customer_email: email,
     success_url: `${siteUrl}/soins/demande?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${siteUrl}/soins/commander?payment=cancelled`,
+    cancel_url: `${siteUrl}/soins/commander?soin=${soin.slug}&payment=cancelled`,
     metadata: {
       flow: "soins",
       firstName,
       lastName,
       email,
+      soin: soin.slug,
+      soinName: soin.name,
     },
     line_items: [
       {
         quantity: 1,
         price_data: {
           currency: "eur",
-          unit_amount: 14500,
+          unit_amount: soin.price * 100,
           product_data: {
-            name: "Soin énergétique à distance",
+            name: `${soin.name} (à distance)`,
           },
         },
       },

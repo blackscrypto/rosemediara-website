@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getSoin } from "@/lib/soins";
 import { getStripe } from "@/lib/stripe";
 
 export async function GET(request: Request) {
@@ -34,5 +35,8 @@ export async function GET(request: Request) {
     firstName: String(session.metadata.firstName ?? "").trim(),
     lastName: String(session.metadata.lastName ?? "").trim(),
     email,
+    soinName: String(session.metadata.soinName ?? "").trim(),
+    minor: Boolean(getSoin(session.metadata.soin)?.minor),
+    amount: typeof session.amount_total === "number" ? session.amount_total / 100 : null,
   });
 }

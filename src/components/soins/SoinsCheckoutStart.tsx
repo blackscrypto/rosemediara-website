@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
+import { getSoin, soins } from "@/lib/soins";
 
-export function SoinsCheckoutStart() {
+export function SoinsCheckoutStart({ initialSoin }: { initialSoin?: string }) {
+  const [soinSlug, setSoinSlug] = useState(getSoin(initialSoin)?.slug ?? "");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,6 +27,7 @@ export function SoinsCheckoutStart() {
 
   function validate() {
     const e: Record<string, string> = {};
+    if (!getSoin(soinSlug)) e.soin = "Choisissez un soin.";
     if (!firstName.trim()) e.firstName = "Le prénom est requis.";
     if (!lastName.trim()) e.lastName = "Le nom est requis.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
@@ -47,6 +50,7 @@ export function SoinsCheckoutStart() {
           firstName: firstName.trim(),
           lastName: lastName.trim(),
           email: email.trim(),
+          soin: soinSlug,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
@@ -67,6 +71,8 @@ export function SoinsCheckoutStart() {
     }
   }
 
+  const soin = getSoin(soinSlug);
+
   return (
     <form
       onSubmit={onSubmit}
@@ -74,13 +80,41 @@ export function SoinsCheckoutStart() {
       noValidate
     >
       <p className="text-sm font-medium leading-relaxed text-text-secondary">
-        Après paiement sécurisé (145&nbsp;€), vous serez redirigé·e vers la page pour
+        Après paiement sécurisé{soin ? <> ({soin.price}&nbsp;€)</> : null}, vous serez redirigé·e vers la page pour
         compléter votre demande et joindre vos photos.
       </p>
 
       {globalError ? (
         <p className="rounded-[12px] bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
           {globalError}
+        </p>
+      ) : null}
+
+      <FormField id="commander-soin" label="Soin choisi" required error={errors.soin}>
+        <select
+          id="commander-soin"
+          name="soin"
+          className="w-full rounded-[12px] border border-border bg-cream/50 px-4 py-3 text-text outline-none transition focus:border-accent-rose focus:ring-2 focus:ring-accent-rose/25"
+          value={soinSlug}
+          onChange={(e) => setSoinSlug(e.target.value)}
+          aria-invalid={errors.soin ? true : undefined}
+        >
+          <option value="" disabled>
+            Sélectionnez un soin
+          </option>
+          {soins.map((s) => (
+            <option key={s.slug} value={s.slug}>
+              {s.name}
+              {s.minor && s.tagline ? ` (${s.tagline.toLowerCase()})` : ""} · {s.price} €
+            </option>
+          ))}
+        </select>
+      </FormField>
+
+      {soin?.minor ? (
+        <p className="text-sm font-medium leading-relaxed text-text-secondary">
+          Ce soin concerne un mineur : la demande est à effectuer par un parent ou le
+          représentant légal, avec ses propres coordonnées.
         </p>
       ) : null}
 
@@ -134,7 +168,7 @@ export function SoinsCheckoutStart() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
         <Button type="submit" variant="primary" disabled={loading} className="w-full sm:w-auto">
-          {loading ? "Redirection vers Stripe…" : "Payer 145 € et continuer"}
+          {loading ? "Redirection vers Stripe…" : soin ? `Payer ${soin.price} € et continuer` : "Payer et continuer"}
         </Button>
         <Link
           href="/soins"

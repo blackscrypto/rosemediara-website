@@ -8,11 +8,16 @@ import { SoinsCheckoutStart } from "@/components/soins/SoinsCheckoutStart";
 export const metadata: Metadata = {
   title: "Réserver un soin | paiement",
   description:
-    "Réglez votre soin énergétique à distance (145 €), puis complétez votre demande détaillée.",
+    "Réglez votre soin énergétique à distance, puis complétez votre demande détaillée.",
   robots: { index: false, follow: true },
 };
 
-export default function SoinsCommanderPage() {
+export default async function SoinsCommanderPage({
+  searchParams,
+}: PageProps<"/soins/commander">) {
+  const { soin } = await searchParams;
+  const initialSoin = typeof soin === "string" ? soin : undefined;
+
   return (
     <div className="py-16 sm:py-20">
       <Container>
@@ -26,7 +31,7 @@ export default function SoinsCommanderPage() {
 
         <div className="mx-auto mt-10 max-w-xl">
           <AnimateOnScroll>
-            <SoinsCheckoutStart />
+            <SoinsCheckoutStart initialSoin={initialSoin} />
           </AnimateOnScroll>
           <p className="mt-6 text-center text-xs font-medium text-text-muted">
             Déjà payé ? Si Stripe vous a renvoyé·e sur cette page sans lien de confirmation,

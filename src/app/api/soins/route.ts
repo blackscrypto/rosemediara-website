@@ -105,6 +105,12 @@ export async function POST(request: Request) {
     );
   }
 
+  const soinName = String(checkoutSession.metadata?.soinName ?? "").trim() || "Soin à distance";
+  const amountPaid =
+    typeof checkoutSession.amount_total === "number"
+      ? `${checkoutSession.amount_total / 100} €`
+      : "—";
+
   const to = getContactEmail();
   const from = getFromEmail();
 
@@ -119,6 +125,8 @@ export async function POST(request: Request) {
   );
 
   const htmlRows = `
+    <tr><td>Soin</td><td>${escapeHtml(soinName)}</td></tr>
+    <tr><td>Montant payé</td><td>${escapeHtml(amountPaid)}</td></tr>
     <tr><td>Prénom</td><td>${escapeHtml(firstName)}</td></tr>
     <tr><td>Nom</td><td>${escapeHtml(lastName)}</td></tr>
     <tr><td>Email</td><td>${escapeHtml(email)}</td></tr>
@@ -137,7 +145,7 @@ export async function POST(request: Request) {
     resend.emails.send({
       from,
       to,
-      subject: `[Rose Mediara] Demande de soin — ${firstName} ${lastName}`,
+      subject: `[Rose Mediara] ${soinName} — ${firstName} ${lastName}`,
       html: ownerHtml,
       attachments,
     }),
@@ -147,7 +155,7 @@ export async function POST(request: Request) {
       subject: "Rose Mediara — réception de votre demande de soin",
       html: `
         <p>Bonjour ${escapeHtml(firstName)},</p>
-        <p>J’ai bien reçu votre demande de soin à distance. Je reviendrai vers vous après étude de votre dossier.</p>
+        <p>J’ai bien reçu votre demande (${escapeHtml(soinName)}). Je reviendrai vers vous après étude de votre dossier.</p>
         <p>Bien à vous,<br/>Rose Mediara</p>
       `,
     }),
