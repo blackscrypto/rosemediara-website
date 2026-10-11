@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { HeroBackdrop } from "@/components/home/HeroBackdrop";
-import { SpiriteoBadge } from "@/components/SpiriteoBadge";
+import { SpiriteoProfileCard, SpiriteoProfileMini } from "@/components/home/SpiriteoProfileCard";
 
 export function Hero() {
   return (
@@ -39,62 +39,67 @@ export function Hero() {
         </svg>
       </div>
       <Container className="relative z-10 py-16 sm:py-24 lg:py-28">
-        <AnimateOnScroll>
-          <div className="relative max-w-3xl">
-            <div className="relative rounded-[1.5rem] border border-white/35 bg-[linear-gradient(155deg,rgba(250,247,243,0.5)_0%,rgba(250,247,243,0.32)_52%,rgba(250,247,243,0.2)_100%)] px-4 py-5 shadow-[0_14px_50px_-22px_rgba(70,45,62,0.4)] backdrop-blur-[2.5px] sm:rounded-[1.75rem] sm:px-6 sm:py-6">
-              <div
-                className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-[linear-gradient(160deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.12)_58%,rgba(255,255,255,0.04)_100%)]"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute inset-[1px] -z-10 rounded-[inherit] border border-accent-rose/10"
-                aria-hidden
-              />
-              <div className="relative">
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-sage-ink">
-                  Thérapeute énergétique
-                </p>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-sage-ink/85">
-                  Médium pur
-                </p>
-                <h1 className="mt-3 font-serif text-2xl font-semibold text-accent-rose sm:text-3xl">
-                  Rose Mediara
-                </h1>
-                <h2 className="mt-2 font-serif text-4xl font-semibold tracking-tight text-text sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
-                  Connectez-vous à votre lumière intérieure
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg font-semibold leading-relaxed text-text sm:text-xl">
-                  Consultations par téléphone et soins énergétiques à distance,
-                  dans le respect de votre rythme, pour retrouver équilibre,
-                  clarté et sérénité sur votre chemin.
-                </p>
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                  <Button href="/consultations" variant="primary">
-                    Réserver une consultation
-                  </Button>
-                  <Button href="/a-propos" variant="secondary">
-                    Découvrir Rose
-                  </Button>
-                </div>
-                <SpiriteoBadge className="mt-6" />
-                <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold text-text">
-                  <Link
-                    href="/deontologie"
-                    className="text-accent-rose underline-offset-4 hover:underline"
-                  >
-                    Lire le code de déontologie
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="shrink-0 underline-offset-4 hover:underline"
-                  >
-                    Me contacter
-                  </Link>
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:gap-10 xl:gap-16">
+          <AnimateOnScroll>
+            <div className="relative max-w-3xl">
+              <div className="relative rounded-[1.5rem] border border-white/35 bg-[linear-gradient(155deg,rgba(250,247,243,0.5)_0%,rgba(250,247,243,0.32)_52%,rgba(250,247,243,0.2)_100%)] px-4 py-5 shadow-[0_14px_50px_-22px_rgba(70,45,62,0.4)] backdrop-blur-[2.5px] sm:rounded-[1.75rem] sm:px-6 sm:py-6">
+                <div
+                  className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-[linear-gradient(160deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.12)_58%,rgba(255,255,255,0.04)_100%)]"
+                  aria-hidden
+                />
+                <div
+                  className="pointer-events-none absolute inset-[1px] -z-10 rounded-[inherit] border border-accent-rose/10"
+                  aria-hidden
+                />
+                <div className="relative">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-sage-ink">
+                    Thérapeute énergétique
+                  </p>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-sage-ink/85">
+                    Médium pur
+                  </p>
+                  <h1 className="mt-3 font-serif text-2xl font-semibold text-accent-rose sm:text-3xl">
+                    Rose Mediara
+                  </h1>
+                  <h2 className="mt-2 font-serif text-4xl font-semibold tracking-tight text-text sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
+                    Connectez-vous à votre lumière intérieure
+                  </h2>
+                  <p className="mt-6 max-w-2xl text-lg font-semibold leading-relaxed text-text sm:text-xl">
+                    Consultations par téléphone et soins énergétiques à distance,
+                    dans le respect de votre rythme, pour retrouver équilibre,
+                    clarté et sérénité sur votre chemin.
+                  </p>
+                  <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                    <Button href="/consultations" variant="primary">
+                      Réserver une consultation
+                    </Button>
+                    <Button href="/a-propos" variant="secondary">
+                      Découvrir Rose
+                    </Button>
+                  </div>
+                  <SpiriteoProfileMini className="mt-6 lg:hidden" />
+                  <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold text-text">
+                    <Link
+                      href="/deontologie"
+                      className="text-accent-rose underline-offset-4 hover:underline"
+                    >
+                      Lire le code de déontologie
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="shrink-0 underline-offset-4 hover:underline"
+                    >
+                      Me contacter
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </AnimateOnScroll>
+          </AnimateOnScroll>
+          <AnimateOnScroll className="hidden lg:block">
+            <SpiriteoProfileCard />
+          </AnimateOnScroll>
+        </div>
       </Container>
     </section>
   );

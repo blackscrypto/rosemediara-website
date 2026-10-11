@@ -51,6 +51,34 @@ html {
   --shadow-header: 0 1px 0 rgba(22, 22, 22, 0.08);
 }
 
+/* Lévitation douce de la carte Spiriteo (accueil) */
+@theme {
+  --animate-float-soft: float-soft 7s ease-in-out infinite;
+  --animate-float-shadow: float-shadow 7s ease-in-out infinite;
+
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes float-shadow {
+    0%,
+    100% {
+      transform: scaleX(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scaleX(0.82);
+      opacity: 0.55;
+    }
+  }
+}
+
 /* Full-page : dégradé vertical continu (même famille que les sections, pas de « plaque ») */
 @utility bg-gradient-page {
   background-color: var(--color-cream);
