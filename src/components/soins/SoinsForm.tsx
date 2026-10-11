@@ -50,7 +50,11 @@ export function SoinsForm() {
     const sessionId = params.get("session_id");
 
     if (sessionId) {
-      setPaymentSessionId(sessionId);
+      // Différé d'une micro-tâche : pas de setState synchrone dans l'effet (react-hooks/set-state-in-effect).
+      queueMicrotask(() => {
+        setPaymentSessionId(sessionId);
+        setMounted(true);
+      });
       params.delete("session_id");
       const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
       window.history.replaceState({}, "", next);
@@ -73,14 +77,12 @@ export function SoinsForm() {
         })
         .catch(() => {});
 
-      setMounted(true);
-
       return () => {
         cancelled = true;
       };
     }
 
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
   }, []);
 
   async function onSubmit(ev: React.FormEvent) {

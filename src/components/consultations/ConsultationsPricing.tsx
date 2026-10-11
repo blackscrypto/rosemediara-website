@@ -1,9 +1,11 @@
 import { Fragment } from "react";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { getConsultationFormat, type ConsultationFormatId } from "@/lib/consultations";
 
 export type ConsultationsPricingVariant = "cards" | "table" | "timeline";
 
 export type PricingItem = {
+  formatId: ConsultationFormatId;
   title: string;
   price: string;
   duration: string;
@@ -17,7 +19,8 @@ export type PricingItem = {
 const pricing: PricingItem[] = [
   {
     title: "Consultation rapide",
-    price: "30",
+    formatId: "15",
+    price: String(getConsultationFormat("15").price),
     duration: "15 minutes",
     intro:
       "Un échange court et ciblé pour obtenir un éclairage immédiat sur une situation précise.",
@@ -33,7 +36,8 @@ const pricing: PricingItem[] = [
   },
   {
     title: "Consultation express",
-    price: "60",
+    formatId: "30",
+    price: String(getConsultationFormat("30").price),
     duration: "30 minutes",
     intro:
       "Un temps équilibré pour explorer une à deux questions avec clarté et fluidité.",
@@ -49,7 +53,8 @@ const pricing: PricingItem[] = [
   },
   {
     title: "Consultation approfondie",
-    price: "90",
+    formatId: "45",
+    price: String(getConsultationFormat("45").price),
     duration: "45 minutes",
     intro:
       "Un temps privilégié pour aller plus en profondeur et éclairer votre situation avec finesse et clarté.",
@@ -65,7 +70,8 @@ const pricing: PricingItem[] = [
   },
   {
     title: "Consultation complète",
-    price: "110",
+    formatId: "60",
+    price: String(getConsultationFormat("60").price),
     duration: "1 heure",
     intro:
       "La formule la plus choisie pour un accompagnement profond, structuré et entièrement personnalisé.",
@@ -314,6 +320,17 @@ function TimelinePricing() {
                         <p className="mt-2 text-sm font-medium leading-snug text-text-secondary sm:text-[0.9375rem] sm:leading-snug">
                           {p.closing}
                         </p>
+
+                        <a
+                          href={`#reserver-${p.formatId}`}
+                          className={`mt-3 inline-flex min-h-[40px] items-center justify-center rounded-[12px] px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-rose focus-visible:ring-offset-2 ${
+                            p.popular
+                              ? "bg-accent-rose text-white shadow-soft hover:bg-accent-rose-hover"
+                              : "border-2 border-accent-rose/70 text-accent-rose hover:bg-accent-rose/10"
+                          }`}
+                        >
+                          Réserver ce format ({p.price}&nbsp;€)
+                        </a>
                       </div>
                     </div>
 

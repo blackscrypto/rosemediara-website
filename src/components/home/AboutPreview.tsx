@@ -3,6 +3,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { RosePortrait } from "@/components/ui/RosePortrait";
+import { spiriteo } from "@/lib/spiriteo";
 
 export function AboutPreview() {
   return (
@@ -42,10 +43,10 @@ export function AboutPreview() {
               </div>
               <div>
                 <dt className="font-serif text-2xl font-semibold text-accent-rose">
-                  1 500+
+                  {spiriteo.consultations}
                 </dt>
                 <dd className="text-xs font-semibold text-sage-ink">
-                  consultations
+                  consultations, dont Spiriteo
                 </dd>
               </div>
               <div>

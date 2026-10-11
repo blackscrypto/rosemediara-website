@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { RosePortrait } from "@/components/ui/RosePortrait";
+import { SpiriteoBadge } from "@/components/SpiriteoBadge";
 
 export const metadata: Metadata = {
   title: "À propos | Mon parcours",
@@ -69,7 +70,10 @@ export default function AboutPage() {
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll>
-            <RosePortrait />
+            <div className="space-y-6">
+              <RosePortrait />
+              <SpiriteoBadge variant="card" />
+            </div>
           </AnimateOnScroll>
         </div>
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { HeroBackdrop } from "@/components/home/HeroBackdrop";
+import { SpiriteoBadge } from "@/components/SpiriteoBadge";
 
 export function Hero() {
   return (
@@ -75,6 +76,7 @@ export function Hero() {
                     Découvrir Rose
                   </Button>
                 </div>
+                <SpiriteoBadge className="mt-6" />
                 <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold text-text">
                   <Link
                     href="/deontologie"

@@ -56,8 +56,9 @@ export default function PolitiqueConfidentialitePage() {
             Les donnees sont accessibles uniquement aux personnes habilitees
             chez Rose Mediara et aux sous-traitants techniques necessaires au
             fonctionnement du service, notamment Netlify (hebergement), OVH
-            (nom de domaine), Stripe (paiements), Supabase (stockage technique)
-            et Resend (emails transactionnels).
+            (nom de domaine), Stripe (paiements), Calendly et Cal.com (prise de
+            rendez-vous en ligne), Supabase (stockage technique) et Resend
+            (emails transactionnels).
           </p>
 
           <h2>6. Durees de conservation</h2>

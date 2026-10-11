@@ -5,6 +5,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { StepCard } from "@/components/StepCard";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
+import { SpiriteoBadge } from "@/components/SpiriteoBadge";
 import { ConsultationsCalSection } from "@/components/consultations/ConsultationsCalSection";
 import { ConsultationsMobileBookingCta } from "@/components/consultations/ConsultationsMobileBookingCta";
 import {
@@ -53,6 +54,7 @@ export default function ConsultationsPage() {
                   Une question avant ?
                 </Button>
               </div>
+              <SpiriteoBadge className="mt-6" />
             </AnimateOnScroll>
           </header>
 
@@ -72,7 +74,7 @@ export default function ConsultationsPage() {
                   step={1}
                   icon={CalendarClock}
                   title="Réservez votre créneau"
-                  description="Choisissez la date, l’heure et le type de séance dans le calendrier en bas de cette page. Le paiement s’effectue en ligne de façon sécurisée."
+                  description="Choisissez la durée, puis la date et l’heure dans le calendrier en bas de cette page. Le paiement s’effectue en ligne de façon sécurisée."
                 />
               </AnimateOnScroll>
               <AnimateOnScroll>
@@ -140,7 +142,7 @@ export default function ConsultationsPage() {
               <SectionTitle
                 id="booking-title"
                 title="Réserver votre consultation"
-                subtitle="Un calendrier ci-dessous : choisissez la durée si besoin, puis votre créneau. Vous pouvez aussi ouvrir Cal.com dans un nouvel onglet."
+                subtitle="Deux étapes : la durée, puis le créneau. Le paiement se fait à la réservation."
                 align="center"
                 className="!mb-5 sm:!mb-6"
               />
